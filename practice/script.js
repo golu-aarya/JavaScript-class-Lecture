@@ -18,4 +18,10 @@
 setInterval(() => {
    console.log("Running....");
    
-}, 1000);                                                                                                                                       
+}, 1000);        
+
+
+
+function checkEvenOdd(){
+   // logic
+}
