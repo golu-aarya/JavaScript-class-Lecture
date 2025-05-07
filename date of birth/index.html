@@ -4,10 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date of Birth calculater</title>
+    <style>
+        body{
+            background: cyan;
+        }
+        .main{
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            height: 250px;
+            width: 400px;
+            border-radius: 15px;
+            background: #fff;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5), 0px 0px 10px rgba(0, 0, 0, 0.5);
+            border: none;
+            outline: none;
+        }
+        .main label{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 400;
+        }
+        
+        .main input{
+            position: relative;
+            width: 80%;
+            height: 30px;
+            margin-left: 30px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+            text-indent: 15px;
+        }
+        .main button{
+            position: relative; 
+            margin-top: 20px;
+          margin-left: 37%;
+          height: 25px;
+          width: 120px;
+          font-size: 16px;
+          box-sizing: border-box;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
 </head>
 <body>
     <div class="main">
-        <label for="">Enter </label>
+        <label for="dob">Enter Your DOB </label><br>
+        <input type="date" id="dob"><br>
+        <button onclick="findMYAge()">check</button>
+        <p id="ageResult"></p>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
