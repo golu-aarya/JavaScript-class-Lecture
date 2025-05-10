@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(24, 59, 78);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main {
+            height: 50vh;
+            width: 70%;
+            background: rgb(84, 119, 146);
+            box-sizing: border-box;
+            box-shadow: 0px 0px 15px rgb(8, 119, 146);
+            border-radius: 15px;
+            border: 2px solid #fff;
+        }
+
+        .main h4 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            color: #060606;
+            letter-spacing: .4px;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0, .5);
+            margin-top: 3px;
+        }
+
+        .main h3 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 28px;
+            color: #ffffff;
+            letter-spacing: .4px;
+            text-shadow: 2px 2px 2px rgb(0, 0, 0, 4);
+            margin-top: -30px;
+        }
+
+        .main .put {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+            color: #060606;
+            width: 80%;
+            height: 50px;
+            margin-left: 90px;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            text-indent: 30px;
+            /* background: rgb(84, 119, 146); */
+            box-shadow: 0 0 10px #fff;
+            margin-bottom: 500px;
+
+
+        }
+
+        .main input {
+
+            font-size: 18px;
+            color: #060606;
+            width: 150px;
+            height: 30px;
+            border: none;
+            outline: none;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgb(0, 0, 0, .5);
+            margin-left: 10px;
+            border-radius: 40px;
+            text-indent: 40px;
+        }
+
+        .main label {
+            margin-left: 100px;
+            font-size: 18px;
+            text-shadow: 1px 1px 2px rgb(0, 0, 0, .5);
+        }
+
+        .main button {
+            margin-left: 250px;
+            margin-top: 20px;
+            height: 30px;
+            width: 150px;
+            border-radius: 40px;
+            border: none;
+            outline: none;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .5s;
+            box-shadow: 0 0 10px rgb(0, 0, 0, .5);
+
+
+        }
+
+        .main button:hover {
+            box-sizing: border-box;
+            box-shadow: 0px 0px 20px rgb(8, 119, 146);
+            background: rgb(8, 119, 146);
+            color: #ffffff;
+        }
+
+        img {
+            position: absolute;
+            height: 20px;
+            width: 20px;
+            margin-top: 35px;
+            margin-left: 48%;
+        }
+
+        #div2 {
+            display: flex;
+            /* background-color: #fff; */
+            /* border-radius: 40px; */
+            padding: 10px;
+            width: 80%;
+            height: 50px;
+            /* margin-left: 80px;  */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h4>Random</h4>
+        <h3>Password Generator</h3>
+        <div id="div2">
+            <input type="text" placeholder="password" class="put" id="password">
+            <img src="copy.png" alt="" onclick="copyPassword()">
+        </div>
+        <label for="num">password Length</label>
+        <input type="number" id="num"><br>
+        <button onclick="creatPassword()">Generate Password</button>
+    </div>
+    <script>
+        const passwordBox = document.getElementById("password");
+        let passwordLength = 6;
+        const upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        const lowerCase = "abcdefghijklmnopqrstuvwxyz"
+        const number = "0123456789"
+        const special = `\`~!@#$%^&*()_+-={}[]\\|:;\"'<>,.?/`
+
+        let hasRunOnce = false;
+        function creatPassword() {
+            let password = ""
+            const lengthInput = document.getElementById("num");
+            passwordLength = parseInt(lengthInput.value);
+
+            password += upperCase[Math.floor(Math.random() * upperCase.length)];
+            password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
+            password += number[Math.floor(Math.random() * number.length)];
+            password += special[Math.floor(Math.random() * special.length)];
+
+            let allCharacter = upperCase + lowerCase + number + special;
+
+            for (let i = 4; i < passwordLength; i++) {
+                password += allCharacter[Math.floor(Math.random() * allCharacter.length)];
+            }
+
+            console.log(password);
+            
+            passwordBox.value = password;
+            if (!hasRunOnce) {
+                hasRunOnce = true;
+                setTimeout(() => {
+                    createPassword();
+                }, 1000);
+            }
+
+        }
+
+        function copyPassword() {
+            const password = passwordBox.value;
+            navigator.clipboard.writeText(password);
+            alert("Password copied to clipboard!");
+        }
+
+
+        const button = document.getElementById("rotateBtn");
+        const image = document.getElementById("rotateImg");
+
+
+        button.addEventListener('click', () => {
+            image.classList.add('rotated');
+            setTimeout(() => {
+                image.classList.remove('rotated');
+            }, 500);
+        })
+
+    </script>
+
+</body>
+
+</html>
