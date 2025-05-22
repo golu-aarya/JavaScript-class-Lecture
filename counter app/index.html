@@ -40,8 +40,8 @@
         position: relative;
         transform: translate(-50%, -50%);
        top: 50%;
-       left: 37%;
-       margin-right: 25px;
+       left: 18%;
+       margin-right: 10px;
        height: 40px;
        width: 100px;
        border-radius: 40px;
@@ -72,7 +72,9 @@
          <h1 style="text-align: center;">Counter App</h1>
          <span id="counter">0</span><br>
         <button class="btn-first" onclick="increment()">Increment</button>
+         <button class="btn-third" onclick="reset()">Reset</button>
         <button class="btn-second" onclick="Decrement()">Decrement</button>
+       
     </div>
 
     <script>
@@ -83,6 +85,11 @@
          }
          function Decrement(){
             count--;
+            document.getElementById('counter').textContent = count;
+         }
+
+         function reset(){
+            count = 0;
             document.getElementById('counter').textContent = count;
          }
     </script>
